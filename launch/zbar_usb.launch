@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find usb_cam)/launch/usb_cam-test.launch" />
+
+
+    <!--<node pkg="nodelet" type="nodelet" name="barcode_reader" args="load zbar_ros/barcode_reader_nodelet zbar_manager">-->
+        <!--<param name="throttle_repeated_barcodes" type="double" value="2.0"/>-->
+    <!--</node>-->
+
+    <node pkg="zbar_ros" type="barcode_reader_node" name="barcode_reader" output="screen">
+    	<remap from="image" to="/usb_cam/image_raw"/>
+        <param name="throttle_repeated_barcodes" type="double" value="1"/>
+    </node>
+
+</launch>
